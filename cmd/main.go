@@ -2,10 +2,18 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/mark89year/increment"
+	"os"
+	"strconv"
 )
 
 func main() {
-	fmt.Println(increment.Increment(10))
+	args := os.Args
+	if len(args) != 2 {
+		panic("specify number for increment: inc 42")
+	}
+	n, err := strconv.Atoi(args[1])
+	if err != nil {
+		panic("number should be a number")
+	}
+	fmt.Println(n + 1)
 }
